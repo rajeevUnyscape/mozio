@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-5g5a(su62s!08d#^2st_-7+00(eiu0$tc1%-ui0rn*6e_ytuji
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','https://mozioo.herokuapp.com/']
 
 
 # Application definition
@@ -169,3 +169,4 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # GDAL_LIBRARY_PATH = r'C:\OSGeo4W64\bin\gdal202'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
