@@ -17,7 +17,7 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.pagination import PageNumberPagination
 from rest_framework import viewsets
 from rest_framework import pagination
-from rest_framework_gis.pagination import GeoJsonPagination
+# from rest_framework_gis.pagination import GeoJsonPagination
 
 
 
@@ -114,7 +114,7 @@ def delete_provider(request, provider_id):
 class ServiceAreaViewSet(viewsets.ModelViewSet):
     serializer_class = ServiceAreaSerializer
     queryset = ServiceArea.objects.all()
-    pagination_class = GeoJsonPagination
+    # pagination_class = GeoJsonPagination
 
     def get_queryset(self):
         queryset = ServiceArea.objects.all()

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Provider, ServiceArea
 from django.contrib.auth.models import User
-from rest_framework_gis.serializers import GeoFeatureModelSerializer
+# from rest_framework_gis.serializers import GeoFeatureModelSerializer
 from rest_framework.relations import PrimaryKeyRelatedField
 
 
@@ -17,7 +17,7 @@ class ProviderSerializer(serializers.ModelSerializer):
         model = Provider
         fields = ['id','name', 'language', 'currency', 'phone_number','created_date','updated_date','created_by','updated_by']
 
-class ServiceAreaSerializer(GeoFeatureModelSerializer):
+class ServiceAreaSerializer(serializers.ModelSerializer):
     provider = ProviderSerializer(read_only=True)
     provider_id = PrimaryKeyRelatedField(queryset=Provider.objects.all(),required=True, write_only=True, source='provider')
     class Meta:

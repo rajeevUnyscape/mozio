@@ -1,7 +1,8 @@
-from django.contrib.gis.db import models
+from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.contrib.auth.models import User
+from djgeojson.fields import PointField
 # Create your models here.
 
 class Provider(models.Model):
@@ -21,7 +22,7 @@ class Provider(models.Model):
 
 class ServiceArea(models.Model):
   provider = models.ForeignKey(Provider, on_delete=models.CASCADE,related_name ="provider")
-  geom = models.PolygonField()
+  geom = PointField()
   name = models.CharField(max_length=200)
   price = models.CharField(max_length=200)
   description = models.CharField(max_length=300)  

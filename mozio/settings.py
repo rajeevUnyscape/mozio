@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django.contrib.gis',
+    # 'django.contrib.gis',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
@@ -86,31 +86,31 @@ WSGI_APPLICATION = 'mozio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': str(os.path.join(BASE_DIR, "db.sqlite3")),
-#     }
-# }
 DATABASES = {
-
     'default': {
-
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-        'NAME': 'dcd1m136voj84p',
-
-        'USER': 'lpevsqbvkpgnxk',
-
-        'PASSWORD': '8a4727705a37ea2d0a1519f7a523031e42c29c206d14ee95fc1fac86243e81e8',
-
-        'HOST': 'ec2-3-229-252-6.compute-1.amazonaws.com',
-
-        'PORT': '5432',
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3")),
     }
-
 }
+# DATABASES = {
+
+#     'default': {
+
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+#         'NAME': 'dcd1m136voj84p',
+
+#         'USER': 'lpevsqbvkpgnxk',
+
+#         'PASSWORD': '8a4727705a37ea2d0a1519f7a523031e42c29c206d14ee95fc1fac86243e81e8',
+
+#         'HOST': 'ec2-3-229-252-6.compute-1.amazonaws.com',
+
+#         'PORT': '5432',
+
+#     }
+
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
