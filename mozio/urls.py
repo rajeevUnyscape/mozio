@@ -23,6 +23,7 @@ router.register('serviceArea', ServiceAreaViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',include(router.urls)),
     path('', include('rest_auth.urls')),
     path('registration/', include('rest_auth.registration.urls')),
     # provider apis url
@@ -30,8 +31,7 @@ urlpatterns = [
     path('getproviderwithpages',get_provider_with_page.as_view({'get': 'list'})),
     path('addprovider', add_providers),
     path('updateprovider/<int:provider_id>', update_provider),
-    path('deleteprovider/<int:provider_id>', delete_provider),
-    # service area apis url
+    path('deleteprovider/<int:provider_id>', delete_provider)
   
 
 
