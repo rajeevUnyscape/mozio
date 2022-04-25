@@ -114,7 +114,6 @@ def delete_provider(request, provider_id):
 class ServiceAreaViewSet(viewsets.ModelViewSet):
     serializer_class = ServiceAreaSerializer
     queryset = ServiceArea.objects.all()
-    # pagination_class = GeoJsonPagination
 
     def get_queryset(self):
         queryset = ServiceArea.objects.all()
