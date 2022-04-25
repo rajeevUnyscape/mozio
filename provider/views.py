@@ -47,6 +47,7 @@ def get_provider(request):
     user = request.user.id
     providers = Provider.objects.filter(created_by=user)
     serializer = ProviderSerializer(providers, many=True)
+    user = User.objects.get(id=user)
     return JsonResponse({'Providers': serializer.data,"email":user.email}, safe=False, status=status.HTTP_200_OK)
 
 
@@ -87,7 +88,7 @@ def update_provider(request, provider_id):
         providers.updated_date = timezone.now()
         providers.save()
         serializer = ProviderSerializer(providers)
-        return JsonResponse({'provider': serializer.data, "email":user.email}, safe=False, status=status.HTTP_200_OK)
+        return JsonResponse({'provider': serializer.data}, safe=False, status=status.HTTP_200_OK)
     except ObjectDoesNotExist as e:
         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
     except Exception:
