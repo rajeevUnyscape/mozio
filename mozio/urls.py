@@ -20,6 +20,8 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('serviceArea', ServiceAreaViewSet)
+router.register('provider',ProviderViewSet)
+router.register('User',UserViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

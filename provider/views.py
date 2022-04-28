@@ -2,10 +2,10 @@ from django.shortcuts import render
 
 # Create your views here.
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated,AllowAny
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .serializers import ProviderSerializer,ServiceAreaSerializer
+from .serializers import ProviderSerializer,ServiceAreaSerializer,UserSerializer
 from .models import Provider,ServiceArea
 from rest_framework import status
 import json
@@ -42,7 +42,7 @@ class get_provider_with_page(viewsets.ViewSet):
 
 @api_view(["GET"])
 @csrf_exempt
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def get_provider(request):
     user = request.user.id
     providers = Provider.objects.filter(created_by=user)
@@ -53,7 +53,7 @@ def get_provider(request):
 
 @api_view(["POST"])
 @csrf_exempt
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def add_providers(request):
     payload = json.loads(request.body)
     user = request.user
@@ -77,7 +77,7 @@ def add_providers(request):
 
 @api_view(["PUT"])
 @csrf_exempt
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def update_provider(request, provider_id):
     user = request.user.id
     payload = json.loads(request.body)
@@ -97,7 +97,7 @@ def update_provider(request, provider_id):
 
 @api_view(["DELETE"])
 @csrf_exempt
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def delete_provider(request, provider_id):
     user = request.user.id
     try:
@@ -141,7 +141,14 @@ class ServiceAreaViewSet(viewsets.ModelViewSet):
         return queryset
 
 
+class UserViewSet(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
 
+
+class ProviderViewSet(viewsets.ModelViewSet):
+    serializer_class = ProviderSerializer
+    queryset = Provider.objects.all()
 
 
 
